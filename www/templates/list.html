@@ -1,0 +1,10 @@
+<ion-view view-title="Notes">
+  <ion-content>
+    <ul class="list">
+      <a href="#/edit/{{note.id}}" class="item" ng-repeat="note in vm.notes">
+        <h2>{{note.title}}</h2>
+        <p>{{note.description}}</p>
+      </a>
+    </ul>
+  </ion-content>
+</ion-view>
