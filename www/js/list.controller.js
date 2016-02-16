@@ -8,5 +8,11 @@
   function ListController(NotesFactory) {
     var vm = this;
     vm.notes = NotesFactory.notes;
+    vm.remove = remove;
+
+    //////////////////
+    function remove(noteId) {
+      NotesFactory.remove(noteId);
+    }
   }
 }());
