@@ -6,24 +6,18 @@
 
   function NotesFactory() {
     var service = {
-      notes: [
-        {
-          id: '1',
-          title: 'First Note',
-          description: 'This is the First note'
-        },
-        {
-          id: '2',
-          title: 'Second Note',
-          description: 'This is the Second note'
-        }
-
-      ],
+      notes: [],
       getNote: getNote,
-      updateNote: updateNote
+      updateNote: updateNote,
+      createNote: createNote
     };
 
     return service;
+    ////////////
+
+    function createNote(note) {
+      service.notes.push(note);
+    }
 
     function getNote(noteId) {
       for (var i = 0; i < service.notes.length; i++) {
