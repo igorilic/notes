@@ -1,18 +1,28 @@
 <ion-view view-title="Notes">
   <ion-content>
-    <div class="padding">
-      <a href="#/add" class="button button-block button-calm">New Note</a>
     </div>
-    <ion-list>
-      <ion-item href="#/edit/{{note.id}}" class="item-remove-animate" ng-repeat="note in vm.notes">
+    <ion-list show-reorder="vm.reordering">
+      <ion-item href="#/edit/{{note.id}}" class="item-remove-animate item-icon-right" ng-repeat="note in vm.notes track by note.id">
         <h2>{{note.title}}</h2>
         <p>{{note.description}}</p>
+        <i class="icon ion-arrow-right-b"></i>
+        <ion-reorder-button class="ion-drag"
+          on-reorder="vm.move(note, $fromIndex, $toIndex)">
+        </ion-reorder-button>
         <ion-option-button
-            class="button-assertive"
+            class="button-assertive icon-left ion-trash-b"
             ng-click="vm.remove(note.id)">
             Delete
         </ion-option-button>
       </ion-item>
     </ion-list>
   </ion-content>
+  <div class="bar bar-footer bar-stable">
+    <a href="#/add" class="button button-assertive icon-left ion-compose">&nbsp; New Note</a>
+    <button class="button icon-left ion-shuffle"
+      ng-click="vm.toggleReordering()"
+      ng-class="{true: 'button-balanced', false: 'button-light'}[vm.reordering == true]">
+      Reorder
+    </button>
+  </div>
 </ion-view>

@@ -11,11 +11,18 @@
       getNote: getNote,
       updateNote: updateNote,
       createNote: createNote,
-      remove: remove
+      remove: remove,
+      move: move
     };
 
     return service;
     ////////////
+
+    function move(note, fromIndex, toIndex) {
+      service.notes.splice(fromIndex, 1);
+      service.notes.splice(toIndex, 0, note);
+      persist();
+    }
 
     function remove(noteId) {
       for (var i = 0; i < service.notes.length; i++) {
